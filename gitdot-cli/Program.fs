@@ -21,28 +21,23 @@ printfn "git-dot file : %s" gitdotFilePath
 printfn "author : %s / email :%s" author email
 
 // read data
-type gitDot = { date: DateTime; commitCount : int }
-let gitDots = 
-    System.IO.File.ReadAllLines(gitdotFilePath) 
-    |> Array.map 
-        (fun line -> 
-        let data = line.Split(',')
-        {date = DateTime.Parse(data.[0]); commitCount = int data.[1]})
+type LineData = { Date: DateTime; CommitCount : int }
+let lineDatas = 
+    System.IO.File.ReadAllLines(gitdotFilePath) |> Array.toList
+    |> List.map (fun line -> line.Split(","))
+    |> List.map (fun arr -> { Date = DateTime.Parse(arr.[0]); CommitCount = int arr.[1] })
         
 // collect to-commit date
-let commitsDates = 
-    gitDots |> Array.toList
+let signatures = 
+    lineDatas
     |> List.collect (fun gitDot -> 
-        let date = gitDot.date.AddDays(offset )
-        let commitCount = gitDot.commitCount
-        let dates = List.init commitCount (fun _ -> date)
-        dates)
-
+        let { Date= date; CommitCount = commitCount} = {gitDot with Date = gitDot.Date.AddDays(offset)}
+        let signature = new Signature(author, email, date)
+        List.init commitCount (fun _ -> signature))
+    
 // generate commit
-commitsDates
-|> List.iter (fun date -> 
+signatures
+|> List.iter (fun signature -> 
     File.AppendAllText(commitFilePath, "commits-gitdot-generated\n")
     Commands.Stage(repo, "*")
-    let signature = new Signature(author, email, date)
-    repo.Commit("commits-gitdot-generated", signature, signature) |> ignore
-    )
+    repo.Commit("commits-gitdot-generated", signature, signature) |> ignore)
