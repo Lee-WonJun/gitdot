@@ -2,7 +2,7 @@
 ![image](https://user-images.githubusercontent.com/10369528/194772233-a1a31d0a-b1b2-4994-86f8-b1556077e07e.png)
 
 **github as a canvas**
-gitdot is a dot image tool for github commit activity.
+gitdot is a pixel art (dot image) tool for github commit activity.
 
 
 
