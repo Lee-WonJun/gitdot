@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gitdot_visual"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="245" Width="984" Background="#FF22272E">
     <Grid>
-
+        <ComboBox x:Name="yearPicker" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Text="Year"/>
+        <Grid x:Name="canvas"  Width="954" Height="126" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0">
+        </Grid>
+        <Button x:Name="reset" Content="Reset" HorizontalAlignment="Left" Margin="761,179,0,0" VerticalAlignment="Top" Width="84" Click="reset_Click"/>
+        <Button x:Name="save" Content="Save" HorizontalAlignment="Left" Margin="869,179,0,0" VerticalAlignment="Top" Width="84" Click="save_Click"/>
     </Grid>
 </Window>
