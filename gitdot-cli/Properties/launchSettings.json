@@ -1,8 +1,7 @@
 {
   "profiles": {
     "gitdot-cli": {
-      "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\dldnj\\Desktop\\kikiki\r\nC:\\Users\\dldnj\\Desktop\\2022.txt\r\nwjlee\r\ndldnjs1013@nate.com"
+      "commandName": "Project"
     }
   }
 }
