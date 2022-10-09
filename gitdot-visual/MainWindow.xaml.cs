@@ -23,6 +23,11 @@ namespace gitdot_visual
         public MainWindow()
         {
             InitializeComponent();
+
+            // yearPicker is combobox, and it selects year, 2000 ~ current year
+            var currentYear = DateTime.Now.Year;
+            yearPicker.ItemsSource = Enumerable.Range(2000, currentYear - 2000 + 1).Reverse();
+            yearPicker.SelectedIndex = 0;
         }
     }
 }
