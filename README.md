@@ -25,4 +25,6 @@ gitdot-cli [repo-path] [gitdot-file-path] [author] [email] [offset]
 - Email: Committer email
 - offset : the date to be added to the commit date (for adjusting the github dashboard)
 
+![image](https://user-images.githubusercontent.com/10369528/194773634-cf1d3f27-ff5f-4547-840c-1223b029326f.png)
+
 After you create the repo, you can push it.
